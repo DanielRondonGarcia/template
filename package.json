@@ -46,7 +46,7 @@
                     "name": "conventionalcommits",
                     "types": [{
                             "type": "ADD",
-                            "section": "➕ Nuevas características"
+                            "section": "✨ Nuevas características"
                         },
                         {
                             "type": "FIX",
