@@ -89,11 +89,10 @@ jobs:
             npm run release prerelease
 
       - name: Commit CHANGELOG.md and package.json
-        uses: stefanzweifel/git-auto-commit-action@v5
+        uses: stefanzweifel/git-auto-commit-action@v4
         with:
           branch: main
           commit_message: 'chore(release): ${{ env.NEW_VERSION }} [skip ci]'
-          file_pattern: CHANGELOG.md, package.json
 
       - name: Create Tag
         run: git tag ${{ env.NEW_VERSION }}
