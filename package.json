@@ -1,6 +1,6 @@
 {
     "name": "template",
-    "version": "0.1.3",
+    "version": "1.0.0",
     "description": "Dar a conocer las buenas prácticas a seguir en el uso de Git como herramienta para el manejo de versiones de los desarrollos almacenados en los repositorios.",
     "repository": {
         "type": "git",
@@ -41,7 +41,8 @@
                 "header": "# Changelog\n\n",
                 "preset": {
                     "name": "conventionalcommits",
-                    "types": [{
+                    "types": [
+                        {
                             "type": "feat",
                             "section": "Nuevas Características",
                             "emoji": "✨"
