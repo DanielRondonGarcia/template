@@ -12,17 +12,24 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Update Changelog
-        uses: stefanzweifel/changelog-updater-action@v1.9.1
+        uses: actions/checkout@v3
         with:
-          latest-version: ${{ github.event.release.name }}
-          release-notes: ${{ github.event.release.body }}
+          fetch-depth: 0
 
-      - name: Commit updated Changelog
-        uses: stefanzweifel/git-auto-commit-action@v4
+      # Setup Node.js environment
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
-          branch: main
-          commit_message: 'docs(changelog): update changelog'
-          file_pattern: CHANGELOG.md
+          registry-url: https://registry.npmjs.org/
+          node-version: '18'
+
+      # Configure Git
+      - name: Git configuration
+        run: |
+          git config --global user.email "devops@actsis.com"
+          git config --global user.name "DanielRondonGarcia"
+
+      - run: npm install
+      - run: npm run release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
