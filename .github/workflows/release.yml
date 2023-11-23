@@ -34,42 +34,56 @@ jobs:
         if: startsWith(github.event.inputs.release-type, 'major') == true
         run: |
             echo "NEW_VERSION=$(npm --no-git-tag-version version major)" >> $GITHUB_ENV
+            # Discard changes in package.json and package-lock.json
+            git checkout -- package.json package-lock.json
             npm run release major
 
       - name: Make a Release
         if: startsWith(github.event.inputs.release-type, 'minor') == true
         run: |
             echo "NEW_VERSION=$(npm --no-git-tag-version version minor)" >> $GITHUB_ENV
+            # Discard changes in package.json and package-lock.json
+            git checkout -- package.json package-lock.json
             npm run release minor
 
       - name: Make a Release
         if: startsWith(github.event.inputs.release-type, 'patch') == true
         run: |
             echo "NEW_VERSION=$(npm --no-git-tag-version version patch)" >> $GITHUB_ENV
+            # Discard changes in package.json and package-lock.json
+            git checkout -- package.json package-lock.json
             npm run release patch
 
       - name: Make a Release
         if: startsWith(github.event.inputs.release-type, 'premajor') == true
         run: |
             echo "NEW_VERSION=$(npm --no-git-tag-version version premajor)" >> $GITHUB_ENV
+            # Discard changes in package.json and package-lock.json
+            git checkout -- package.json package-lock.json
             npm run release premajor
 
       - name: Make a Release
         if: startsWith(github.event.inputs.release-type, 'preminor') == true
         run: |
             echo "NEW_VERSION=$(npm --no-git-tag-version version preminor)" >> $GITHUB_ENV
+            # Discard changes in package.json and package-lock.json
+            git checkout -- package.json package-lock.json
             npm run release preminor
 
       - name: Make a Release
         if: startsWith(github.event.inputs.release-type, 'prepatch') == true
         run: |
             echo "NEW_VERSION=$(npm --no-git-tag-version version prepatch)" >> $GITHUB_ENV
+            # Discard changes in package.json and package-lock.json
+            git checkout -- package.json package-lock.json
             npm run release prepatch
 
       - name: Make a Release
         if: startsWith(github.event.inputs.release-type, 'prerelease') == true
         run: |
             echo "NEW_VERSION=$(npm --no-git-tag-version version prerelease)" >> $GITHUB_ENV
+            # Discard changes in package.json and package-lock.json
+            git checkout -- package.json package-lock.json
             npm run release prerelease
 
       - name: Create Release
