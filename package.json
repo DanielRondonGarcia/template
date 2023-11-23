@@ -27,11 +27,13 @@
     "release-it": {
         "git": {
             "commit": false,
-            "commitMessage": "chore: release v${version}",
+            "tag": false,
+            "push": false,
+            "commitMessage": "CHORE: release v${version}",
             "changelog": "npx auto-changelog --stdout --commit-limit false -u --template https://raw.githubusercontent.com/release-it/release-it/main/templates/changelog-compact.hbs"
         },
         "github": {
-            "release": true
+            "release": false
         },
         "npm": {
             "publish": false
@@ -43,36 +45,60 @@
                 "preset": {
                     "name": "conventionalcommits",
                     "types": [{
-                            "type": "feat",
-                            "section": "✨ Nuevas Características"
+                            "type": "ADD",
+                            "section": "➕ Nuevas características"
                         },
                         {
-                            "type": "fix",
-                            "section": "🐛 Correcciones"
+                            "type": "FIX",
+                            "section": "🐛 Corrección de errores"
                         },
                         {
-                            "type": "chore",
-                            "hidden": true
-                        },
-                        {
-                            "type": "docs",
+                            "type": "DOCS",
                             "section": "📚 Documentación"
                         },
                         {
-                            "type": "style",
-                            "section": "💎 Estilos"
+                            "type": "DEPLOY",
+                            "section": "🚀 Despliegue"
                         },
                         {
-                            "type": "refactor",
+                            "type": "PKG",
+                            "section": "📦 Paquetes"
+                        },
+                        {
+                            "type": "REFACTOR",
                             "section": "♻️ Refactorización"
                         },
                         {
-                            "type": "perf",
-                            "section": "📈 Rendimiento"
+                            "type": "TEST",
+                            "section": "🧪 Pruebas"
                         },
                         {
-                            "type": "test",
-                            "section": "🚨 Pruebas"
+                            "type": "DELETE",
+                            "section": "🗑 Eliminación"
+                        },
+                        {
+                            "type": "WIP",
+                            "hidden": true
+                        },
+                        {
+                            "type": "MERGE",
+                            "hidden": true
+                        },
+                        {
+                            "type": "DEVOPS",
+                            "hidden": true
+                        },
+                        {
+                            "type": "STYLE",
+                            "section": "🎨 Estilos"
+                        },
+                        {
+                            "type": "UPDATE",
+                            "section": "🔼 Actualización"
+                        },
+                        {
+                            "type": "CHORE",
+                            "hidden": true
                         }
                     ]
                 }
