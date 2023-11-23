@@ -32,57 +32,45 @@ jobs:
       # Make a Release using release-it
       - name: Make a Release
         if: startsWith(github.event.inputs.release-type, 'major') == true
-        # Init var for type of release
-        env:
-          RELEASE_TYPE: major
-        run: npm run release major
+        run: |
+            echo "NEW_VERSION=$(npm --no-git-tag-version version major)" >> $GITHUB_ENV
+            npm run release major
 
       - name: Make a Release
         if: startsWith(github.event.inputs.release-type, 'minor') == true
-        # Init var for type of release
-        env:
-            RELEASE_TYPE: major
-        run: npm run release minor
-      
+        run: |
+            echo "NEW_VERSION=$(npm --no-git-tag-version version minor)" >> $GITHUB_ENV
+            npm run release minor
+
       - name: Make a Release
         if: startsWith(github.event.inputs.release-type, 'patch') == true
-        # Init var for type of release
-        env:
-            RELEASE_TYPE: major
-        run: npm run release patch
+        run: |
+            echo "NEW_VERSION=$(npm --no-git-tag-version version patch)" >> $GITHUB_ENV
+            npm run release patch
 
       - name: Make a Release
         if: startsWith(github.event.inputs.release-type, 'premajor') == true
-        # Init var for type of release
-        env:
-            RELEASE_TYPE: major
-        run: npm run release premajor
+        run: |
+            echo "NEW_VERSION=$(npm --no-git-tag-version version premajor)" >> $GITHUB_ENV
+            npm run release premajor
 
       - name: Make a Release
         if: startsWith(github.event.inputs.release-type, 'preminor') == true
-        # Init var for type of release
-        env:
-            RELEASE_TYPE: major
-        run: npm run release preminor
+        run: |
+            echo "NEW_VERSION=$(npm --no-git-tag-version version preminor)" >> $GITHUB_ENV
+            npm run release preminor
 
       - name: Make a Release
         if: startsWith(github.event.inputs.release-type, 'prepatch') == true
-        # Init var for type of release
-        env:
-            RELEASE_TYPE: major
-        run: npm run release prepatch
+        run: |
+            echo "NEW_VERSION=$(npm --no-git-tag-version version prepatch)" >> $GITHUB_ENV
+            npm run release prepatch
 
       - name: Make a Release
         if: startsWith(github.event.inputs.release-type, 'prerelease') == true
-        # Init var for type of release
-        env:
-            RELEASE_TYPE: major
-        run: npm run release prerelease
-
-      # Get the new version number
-      - name: Get the version number
-        id: get_version
-        run: echo "NEW_VERSION=$(npm --no-git-tag-version ${RELEASE_TYPE})" >> $GITHUB_ENV
+        run: |
+            echo "NEW_VERSION=$(npm --no-git-tag-version version prerelease)" >> $GITHUB_ENV
+            npm run release prerelease
 
       - name: Create Release
         uses: ncipollo/release-action@v1.12.0
