@@ -1,0 +1,71 @@
+{
+    "name": "template",
+    "version": "1.0.0",
+    "description": "Dar a conocer las buenas prácticas a seguir en el uso de Git como herramienta para el manejo de versiones de los desarrollos almacenados en los repositorios.",
+    "main": "index.js",
+    "scripts": {
+        "release": "release-it"
+    },
+    "keywords": [],
+    "author": "DanielRondonGarcia",
+    "license": "ISC",
+    "dependencies": {
+        "@commitlint/cli": "^18.4.3",
+        "@commitlint/config-conventional": "^18.4.3",
+        "@release-it/conventional-changelog": "^8.0.1",
+        "husky": "^8.0.3",
+        "release-it": "^17.0.0"
+    },
+    "release-it": {
+        "git": {
+            "tagName": "chore: release v${version}"
+        },
+        "github": {
+            "release": true
+        },
+        "npm": {
+            "publish": false
+        },
+        "plugins": {
+            "@release-it/conventional-changelog": {
+                "infile": "CHANGELOG.md",
+                "preset": {
+                    "name": "conventionalcommits",
+                    "types": [{
+                            "type": "feat",
+                            "section": "Features"
+                        },
+                        {
+                            "type": "fix",
+                            "section": "Bug Fixes"
+                        },
+                        {
+                            "type": "chore",
+                            "hidden": true
+                        },
+                        {
+                            "type": "docs",
+                            "hidden": true
+                        },
+                        {
+                            "type": "style",
+                            "hidden": true
+                        },
+                        {
+                            "type": "refactor",
+                            "hidden": true
+                        },
+                        {
+                            "type": "perf",
+                            "hidden": true
+                        },
+                        {
+                            "type": "test",
+                            "hidden": true
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}
