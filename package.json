@@ -1,6 +1,6 @@
 {
     "name": "template",
-    "version": "1.0.0",
+    "version": "0.1.2",
     "description": "Dar a conocer las buenas prácticas a seguir en el uso de Git como herramienta para el manejo de versiones de los desarrollos almacenados en los repositorios.",
     "main": "index.js",
     "scripts": {
