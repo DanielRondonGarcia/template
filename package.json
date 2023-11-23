@@ -2,12 +2,21 @@
     "name": "template",
     "version": "0.1.3",
     "description": "Dar a conocer las buenas prácticas a seguir en el uso de Git como herramienta para el manejo de versiones de los desarrollos almacenados en los repositorios.",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/DanielRondonGarcia/template"
+    },
+    "homepage": "https://rondon.fun#readme",
+    "bugs": "https://github.com/DanielRondonGarcia/template/issues",
     "scripts": {
         "release": "release-it"
     },
     "keywords": [],
-    "author": "DanielRondonGarcia",
-    "license": "ISC",
+    "author": {
+        "email": "daniel5232010@gmail.com",
+        "name": "DanielRondonGarcia"
+    },
+    "license": "MIT",
     "dependencies": {
         "@commitlint/cli": "^18.4.3",
         "@commitlint/config-conventional": "^18.4.3",
@@ -17,7 +26,8 @@
     },
     "release-it": {
         "git": {
-            "commitMessage": "chore: release v${version}"
+            "commitMessage": "chore: release v${version}",
+            "changelog": "npx auto-changelog --stdout --commit-limit false -u --template https://raw.githubusercontent.com/release-it/release-it/main/templates/changelog-compact.hbs"
         },
         "github": {
             "release": true
@@ -33,11 +43,13 @@
                     "name": "conventionalcommits",
                     "types": [{
                             "type": "feat",
-                            "section": "Features"
+                            "section": "Nuevas Características",
+                            "emoji": "✨"
                         },
                         {
                             "type": "fix",
-                            "section": "Bug Fixes"
+                            "section": "Correcciones",
+                            "emoji": "🐛"
                         },
                         {
                             "type": "chore",
@@ -45,23 +57,28 @@
                         },
                         {
                             "type": "docs",
-                            "hidden": true
+                            "section": "Documentación",
+                            "emoji": "📚"
                         },
                         {
                             "type": "style",
-                            "hidden": true
+                            "section": "Estilos",
+                            "emoji": "💎"
                         },
                         {
                             "type": "refactor",
-                            "hidden": true
+                            "section": "Refactorización",
+                            "emoji": "♻️"
                         },
                         {
                             "type": "perf",
-                            "hidden": true
+                            "section": "Rendimiento",
+                            "emoji": "📈"
                         },
                         {
                             "type": "test",
-                            "hidden": true
+                            "section": "Pruebas",
+                            "emoji": "🚨"
                         }
                     ]
                 }
