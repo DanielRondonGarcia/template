@@ -24,31 +24,80 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      # Get the actual version number
+      - name: Get the actual version number
+        id: get_actual_version
+        run: echo "ACTUAL_VERSION=$(node -p "require('./package.json').version")" >> $GITHUB_ENV
+
       # Make a Release using release-it
       - name: Make a Release
         if: startsWith(github.event.inputs.release-type, 'major') == true
+        # Init var for type of release
+        env:
+          RELEASE_TYPE: major
         run: npm run release major
 
       - name: Make a Release
         if: startsWith(github.event.inputs.release-type, 'minor') == true
+        # Init var for type of release
+        env:
+            RELEASE_TYPE: major
         run: npm run release minor
       
       - name: Make a Release
         if: startsWith(github.event.inputs.release-type, 'patch') == true
+        # Init var for type of release
+        env:
+            RELEASE_TYPE: major
         run: npm run release patch
 
       - name: Make a Release
         if: startsWith(github.event.inputs.release-type, 'premajor') == true
+        # Init var for type of release
+        env:
+            RELEASE_TYPE: major
         run: npm run release premajor
 
       - name: Make a Release
         if: startsWith(github.event.inputs.release-type, 'preminor') == true
+        # Init var for type of release
+        env:
+            RELEASE_TYPE: major
         run: npm run release preminor
 
       - name: Make a Release
         if: startsWith(github.event.inputs.release-type, 'prepatch') == true
+        # Init var for type of release
+        env:
+            RELEASE_TYPE: major
         run: npm run release prepatch
 
       - name: Make a Release
         if: startsWith(github.event.inputs.release-type, 'prerelease') == true
+        # Init var for type of release
+        env:
+            RELEASE_TYPE: major
         run: npm run release prerelease
+
+      # Get the new version number
+      - name: Get the version number
+        id: get_version
+        run: echo "NEW_VERSION=$(npm --no-git-tag-version ${RELEASE_TYPE})" >> $GITHUB_ENV
+
+      - name: Create Release
+        uses: ncipollo/release-action@v1.12.0
+        with:
+          artifacts: dist/*
+          token: ${{ secrets.GITHUB_TOKEN }}
+          releaseName: Release ${{ env.NEW_VERSION }}
+          releaseNotes: |
+            ${{ env.NEW_VERSION }}
+            ${{ env.RELEASE_TYPE }}
+            ${{ env.ACTUAL_VERSION }}
+
+      - name: Commit CHANGELOG.md and package.json
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          branch: main
+          commit_message: 'chore(release): ${{ env.NEW_VERSION }} [skip ci]'
+          file_pattern: CHANGELOG.md, package.json
