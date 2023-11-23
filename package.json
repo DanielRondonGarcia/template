@@ -26,6 +26,7 @@
     },
     "release-it": {
         "git": {
+            "commit": false,
             "commitMessage": "chore: release v${version}",
             "changelog": "npx auto-changelog --stdout --commit-limit false -u --template https://raw.githubusercontent.com/release-it/release-it/main/templates/changelog-compact.hbs"
         },
@@ -41,16 +42,13 @@
                 "header": "# Changelog\n\n",
                 "preset": {
                     "name": "conventionalcommits",
-                    "types": [
-                        {
+                    "types": [{
                             "type": "feat",
-                            "section": "Nuevas Características",
-                            "emoji": "✨"
+                            "section": "✨ Nuevas Características"
                         },
                         {
                             "type": "fix",
-                            "section": "Correcciones",
-                            "emoji": "🐛"
+                            "section": "🐛 Correcciones"
                         },
                         {
                             "type": "chore",
@@ -58,28 +56,23 @@
                         },
                         {
                             "type": "docs",
-                            "section": "Documentación",
-                            "emoji": "📚"
+                            "section": "📚 Documentación"
                         },
                         {
                             "type": "style",
-                            "section": "Estilos",
-                            "emoji": "💎"
+                            "section": "💎 Estilos"
                         },
                         {
                             "type": "refactor",
-                            "section": "Refactorización",
-                            "emoji": "♻️"
+                            "section": "♻️ Refactorización"
                         },
                         {
                             "type": "perf",
-                            "section": "Rendimiento",
-                            "emoji": "📈"
+                            "section": "📈 Rendimiento"
                         },
                         {
                             "type": "test",
-                            "section": "Pruebas",
-                            "emoji": "🚨"
+                            "section": "🚨 Pruebas"
                         }
                     ]
                 }
