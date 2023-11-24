@@ -2,6 +2,8 @@
 
 
 
+## 2.0.0 (2023-11-24)
+
 ## [1.0.0](https://github.com/DanielRondonGarcia/template/compare/0.1.3...1.0.0) (2023-11-23)
 
 
