@@ -1,0 +1,109 @@
+{
+    "name": "template",
+    "version": "2.0.0",
+    "description": "Dar a conocer las buenas prácticas a seguir en el uso de Git como herramienta para el manejo de versiones de los desarrollos almacenados en los repositorios.",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/DanielRondonGarcia/template"
+    },
+    "homepage": "https://rondon.fun#readme",
+    "bugs": "https://github.com/DanielRondonGarcia/template/issues",
+    "scripts": {
+        "release": "release-it"
+    },
+    "keywords": [],
+    "author": {
+        "email": "daniel5232010@gmail.com",
+        "name": "DanielRondonGarcia"
+    },
+    "license": "MIT",
+    "dependencies": {
+        "@commitlint/cli": "^18.4.3",
+        "@commitlint/config-conventional": "^18.4.3",
+        "@release-it/conventional-changelog": "^8.0.1",
+        "husky": "^8.0.3",
+        "release-it": "^17.0.0"
+    },
+    "release-it": {
+        "git": {
+            "commit": false,
+            "tag": false,
+            "push": false,
+            "commitMessage": "CHORE: release v${version}",
+            "changelog": "npx auto-changelog --stdout --commit-limit false -u --template https://raw.githubusercontent.com/release-it/release-it/main/templates/changelog-compact.hbs"
+        },
+        "github": {
+            "release": false
+        },
+        "npm": {
+            "publish": false
+        },
+        "plugins": {
+            "@release-it/conventional-changelog": {
+                "infile": "CHANGELOG.md",
+                "header": "# Changelog\n\n",
+                "preset": {
+                    "name": "conventionalcommits",
+                    "types": [
+                        {
+                            "type": "ADD",
+                            "section": "✨ Nuevas características"
+                        },
+                        {
+                            "type": "FIX",
+                            "section": "🐛 Corrección de errores"
+                        },
+                        {
+                            "type": "DOCS",
+                            "section": "📚 Documentación"
+                        },
+                        {
+                            "type": "DEPLOY",
+                            "section": "🚀 Despliegue"
+                        },
+                        {
+                            "type": "PKG",
+                            "section": "📦 Paquetes"
+                        },
+                        {
+                            "type": "REFACTOR",
+                            "section": "♻️ Refactorización"
+                        },
+                        {
+                            "type": "TEST",
+                            "section": "🧪 Pruebas"
+                        },
+                        {
+                            "type": "DELETE",
+                            "section": "🗑 Eliminación"
+                        },
+                        {
+                            "type": "WIP",
+                            "hidden": true
+                        },
+                        {
+                            "type": "MERGE",
+                            "hidden": true
+                        },
+                        {
+                            "type": "DEVOPS",
+                            "hidden": true
+                        },
+                        {
+                            "type": "STYLE",
+                            "section": "🎨 Estilos"
+                        },
+                        {
+                            "type": "UPDATE",
+                            "section": "🔼 Actualización"
+                        },
+                        {
+                            "type": "CHORE",
+                            "hidden": true
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}
