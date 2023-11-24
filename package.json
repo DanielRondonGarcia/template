@@ -44,61 +44,60 @@
                 "header": "# Changelog\n\n",
                 "preset": {
                     "name": "conventionalcommits",
-                    "types": [
-                        {
-                            "type": "ADD",
+                    "types": [{
+                            "type": "add",
                             "section": "✨ Nuevas características"
                         },
                         {
-                            "type": "FIX",
+                            "type": "fix",
                             "section": "🐛 Corrección de errores"
                         },
                         {
-                            "type": "DOCS",
+                            "type": "docs",
                             "section": "📚 Documentación"
                         },
                         {
-                            "type": "DEPLOY",
+                            "type": "deploy",
                             "section": "🚀 Despliegue"
                         },
                         {
-                            "type": "PKG",
+                            "type": "pkg",
                             "section": "📦 Paquetes"
                         },
                         {
-                            "type": "REFACTOR",
+                            "type": "refactor",
                             "section": "♻️ Refactorización"
                         },
                         {
-                            "type": "TEST",
+                            "type": "test",
                             "section": "🧪 Pruebas"
                         },
                         {
-                            "type": "DELETE",
+                            "type": "delete",
                             "section": "🗑 Eliminación"
                         },
                         {
-                            "type": "WIP",
+                            "type": "wip",
                             "hidden": true
                         },
                         {
-                            "type": "MERGE",
+                            "type": "merge",
                             "hidden": true
                         },
                         {
-                            "type": "DEVOPS",
+                            "type": "devops",
                             "hidden": true
                         },
                         {
-                            "type": "STYLE",
+                            "type": "style",
                             "section": "🎨 Estilos"
                         },
                         {
-                            "type": "UPDATE",
+                            "type": "update",
                             "section": "🔼 Actualización"
                         },
                         {
-                            "type": "CHORE",
+                            "type": "chore",
                             "hidden": true
                         }
                     ]
